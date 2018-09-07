@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Starting the serial port redirector client..."
+echo "Press ^C twice to shut down the server."
+echo "This script will ask for the root password and run socat as root because the /dev entries sometimes have restrictive permissions."
+while 1; do
+    sudo socat -d -d -d -t0 -T0 pty,link=/dev/ttyV0,waitslave tcp:localhost:7000
+done
