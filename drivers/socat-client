@@ -6,5 +6,5 @@ while true; do
     echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
     echo " Server restarting, press ^C now to exit. "
     echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-"
-    
+    sleep 2;
 done
