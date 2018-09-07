@@ -3,5 +3,8 @@ echo "Starting the serial port redirector client..."
 echo "Press ^C twice to shut down the server."
 while true; do
     sudo socat -d -d -d -t0 -T0 pty,link=/dev/ttyV0,waitslave tcp:localhost:7000
+    echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
+    echo " Press ^C again to shut down the server. "
+    echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~"
     sleep 1;
 done
