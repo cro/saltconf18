@@ -1,0 +1,18 @@
+master: salt
+
+file_client: local
+file_roots:
+  base:
+    - /home/ubuntu/salt/saltconf/lab02b
+
+proxy_keep_alive: False
+
+cachedir: /home/ubuntu/salt/saltconf/lab02b/var/cache/salt/proxy
+pki_dir: /home/ubuntu/salt/saltconf/lab02b/etc/salt/pki/proxy
+sock_dir: /home/ubuntu/salt/saltconf/lab02b/var/run/salt/proxy
+pidfile: /home/ubuntu/salt/saltconf/lab02b/var/run/salt-proxy.pid
+
+beacons:
+  wifi_scan:
+    interval: 15
+

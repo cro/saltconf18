@@ -1,0 +1,43 @@
+#!/bin/bash
+
+case "$1" in
+    lab01a)
+       echo "$1 salt-proxy starting..."
+       salt-proxy -c /home/ubuntu/salt/saltconf/$1/etc/salt --proxyid owm -l debug
+    ;;
+
+    lab01b)
+       echo "$1 salt-proxy starting..."
+       salt-proxy -c /home/ubuntu/salt/saltconf/$1/etc/salt --proxyid owm -l debug
+    ;;
+
+    lab01c)
+       echo "$1 salt-proxies starting..."
+       salt-proxy -c /home/ubuntu/salt/saltconf/$1/etc/salt --proxyid pws &
+       salt-proxy -c /home/ubuntu/salt/saltconf/$1/etc/salt --proxyid pws2 &
+    ;;
+
+    lab02a)
+       echo "$1 salt-proxy starting..."
+       salt-proxy -c /home/ubuntu/salt/saltconf/$1/etc/salt --proxyid esp32 -l debug
+    ;;
+
+    lab02b)
+       echo "$1 salt-proxy starting..."
+       salt-proxy -c /home/ubuntu/salt/saltconf/$1/etc/salt --proxyid esp32 -l debug
+    ;;
+
+    stop)
+       echo "Stopping all proxies..."
+       pkill -fc -9 salt-proxy
+    ;;
+
+    *)
+        echo "lab-proxy: salt-proxy helper script for SaltConf18"
+        echo "lab01a: Lab 1 Phase 1, creating a proxymodule for OpenWeatherMap"
+        echo "lab01b: Lab 1 Phase 2, Creating and Querying Personal Weather Stations"
+        echo "lab01c: Lab 1 Phase 3, Personal Weather Stations as Proxied Devices"
+        echo "lab02a: Creating a WiFi sniffer part 1, File Managment on the ESP32"
+        echo "lab02b: Creating a WiFi sniffer part 2, ESP32 Proxymodule and Execution Module"
+        exit 1
+esac

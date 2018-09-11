@@ -1,0 +1,12 @@
+master: salt
+
+file_client: local
+file_roots:
+  base:
+    - /home/ubuntu/salt/saltconf/lab01c
+
+proxy_keep_alive: False
+cachedir: /home/ubuntu/salt/saltconf/lab01c/var/cache/salt/proxy
+pki_dir: /home/ubuntu/salt/saltconf/lab01c/etc/salt/pki/proxy
+sock_dir: /home/ubuntu/salt/saltconf/lab01c/var/run/salt/proxy
+pidfile: /home/ubuntu/salt/saltconf/lab01c/var/run/salt-proxy.pid
