@@ -57,14 +57,26 @@ def initialized():
 
 def ping():
 
-    cmd = [DETAILS['uploader'], '--port', DETAILS['port'], '--baud', DETAILS['baud'], 'ls']
-
-    result = __salt__['cmd.run_all'](cmd)
-    if result['retcode'] != 0:
-        log.debug('Tried listing files {}'.format(result['stdout']))
-
-    return result['retcode'] == 0
-
+    stub_code = '''import machine
+import time
+led = machine.Pin(2, machine.Pin.OUT)
+led(1)
+time.sleep(.4)
+led(0)
+'''
+    with tempfile.NamedTemporaryFile(mode='rw+b') as f:
+        f.write(stub_code)
+        f.flush()
+        f.seek(0)
+        cmd = ['ampy', '--port', DETAILS['port'], '--baud', DETAILS['baud'],
+                'run', f.name]
+        run_result = __salt__['cmd.run_all'](cmd)
+        log.debug('!@#$!@#$!@#$!@#$')
+        log.debug(run_result)
+        if run_result['retcode'] == 0:
+            return True
+        else:
+            return False
 
 def list_files():
 
@@ -153,6 +165,8 @@ def exec_on_board(name):
         cmd = ['ampy', '--port', DETAILS['port'], '--baud', DETAILS['baud'],
                 'run', f.name]
         run_result = __salt__['cmd.run_all'](cmd)
+        log.debug('!@#$!@#$!@#$!@#$')
+        log.debug(run_result)
         if run_result['retcode'] == 0:
             return run_result['stdout']
         else:
